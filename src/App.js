@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import DisplayQuote from "./DisplayQuote";
+import Button from "./Button";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      quote: "Generic quote",
+      author: "Generic author"
+    };
+  }
+
+  onClickHandler = () => {
+    fetch("/lotr/quote")
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        return data;
+      })
+      .then(data => {
+        const {author, quote} = data;
+        this.setState({
+          author,
+          quote
+        })
+      })
+      .catch(error => console.log(error));
+    
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Lord of the Quotes</h1>
+        <DisplayQuote author={this.state.author} quote={this.state.quote} />
+        <Button clickHandler={this.onClickHandler} />
+      </div>
+    );
+  }
 }
 
 export default App;
