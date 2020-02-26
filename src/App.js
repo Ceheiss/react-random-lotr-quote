@@ -16,7 +16,7 @@ class App extends React.Component {
   }
 
   onClickHandler = () => {
-    fetch("/lotr/quote")
+    fetch("https://lotr-random-quote-api.herokuapp.com/lotr/quote")
       .then(response => {
         return response.json();
       })
