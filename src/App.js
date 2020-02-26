@@ -32,7 +32,7 @@ class App extends React.Component {
           image
         });
       })
-      .catch(error => console.log(error));
+      .catch(error => console.error(error));
   };
 
   render() {
