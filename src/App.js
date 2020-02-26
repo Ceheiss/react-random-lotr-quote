@@ -11,12 +11,12 @@ class App extends React.Component {
       quote: "Yes, yes preciousss. Come and get some precioussss quotesss",
       author: "Gollum",
       image:
-        "https://lotr-random-quote-api.herokuapp.com/lotr/images/gollum.jpg"
+        "https://lotr-random-quote-api.herokuapp.com/images/gollum.jpg"
     };
   }
 
   onClickHandler = () => {
-    fetch("https://lotr-random-quote-api.herokuapp.com/lotr/quote")
+    fetch("/api/quote")
       .then(response => {
         return response.json();
       })
