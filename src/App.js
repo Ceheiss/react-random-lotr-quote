@@ -17,12 +17,8 @@ class App extends React.Component {
 
   onClickHandler = () => {
     fetch("https://lotr-random-quote-api.herokuapp.com/api/quote")
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        return data;
-      })
+      .then(response => response.json())
+      .then(data => data)
       .then(data => {
         const { author, quote, image } = data;
         console.log(data);
